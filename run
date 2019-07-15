@@ -1,0 +1,25 @@
+#!/bin/bash
+
+: ${BACULA_SDNAME:="bacula"}
+: ${BACULA_DIRNAME:="bacula"}
+: ${BACULA_MONNAME:="${BACULA_DIRNAME}"}
+: ${BACULA_DEBUG:="50"}
+: ${BACULA_SDPASSWORD:="password"}
+: ${BACULA_MONSDPASSWORD:="${BACULA_SDPASSWORD}"}
+
+CONFIGS_VARS=(
+ BACULA_SDNAME
+ BACULA_SDPASSWORD
+ BACULA_DIRNAME
+ BACULA_MONNAME
+)
+
+for c in ${CONFIGS_VARS[@]}; do
+ sed -i "s,@@${c}@@,$(eval echo \$$c)," /etc/bacula/bacula-sd.conf
+done
+
+echo "==> Verifying Bacula SD configuration"
+bacula-sd -t -c /etc/bacula/bacula-sd.conf
+
+echo "==> Starting Bacula SD"
+bacula-sd -f -d ${BACULA_DEBUG} -c /etc/bacula/bacula-sd.conf
