@@ -1,4 +1,4 @@
-# Bacula File Daemon
+# Bacula Storage Daemon
 
 Bacula Storage Daemon container. This daemon runs will store the backups.
 
