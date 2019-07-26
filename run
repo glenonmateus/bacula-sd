@@ -1,6 +1,6 @@
 #!/bin/bash
 
-: ${BACULA_SDNAME:="bacula"}
+: ${BACULA_SDNAME:="bacula-sd"}
 : ${BACULA_SDPASSWORD:="password"}
 : ${BACULA_DIRNAME:="bacula"}
 : ${BACULA_MONNAME:="${BACULA_DIRNAME}-mon"}
