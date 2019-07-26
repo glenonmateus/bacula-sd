@@ -34,4 +34,7 @@ Bacula File Daemon Debug Level (default **50**)
 
 To run the container:
 
-`docker container run --name bacula-sd -e BACULA_SDPASSWORD=password glenonmateus/bacula-sd`
+`docker container run --name bacula-sd \ 
+    -e BACULA_SDPASSWORD=password \ 
+    -p 9103:9103 \
+    glenonmateus/bacula-sd`
